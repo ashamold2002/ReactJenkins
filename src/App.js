@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Header } from './Components/Header';
+import { Home } from './Components/Home';
+import { Viewcart } from './Components/Viewcart';
+import Container from "react-bootstrap/Container";
+import { useState,createContext } from 'react';
+
+export const cartContext=createContext();
 
 function App() {
+  const [cart,setCart]=useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <cartContext.Provider value={{cart,setCart}}>
+    <BrowserRouter>
+    <Header cart={cart}/>
+    <Container fluid className='container'>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/Cart" element={<Viewcart />}/>
+        
+      </Routes>
+       
+    </Container>
+    </BrowserRouter>
+    </cartContext.Provider>
+    </>
   );
 }
 
