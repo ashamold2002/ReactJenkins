@@ -2,7 +2,7 @@ import React from 'react';
 import "./Product.css";
 import { useContext } from 'react';
 
-import { Card, CardImg, CardGroup,Button } from 'react-bootstrap'
+import { Card,Button } from 'react-bootstrap'
 import { cartContext } from '../App';
 
 export const Product = ({product}) => {

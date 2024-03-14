@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Viewcart.css';
-import { Card, CardImg, CardGroup,Button, Container } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { useContext } from 'react';
 import { cartContext } from '../App';
 
 
 export const Viewcart = () => {
-  const {cart,setCart}=useContext(cartContext);
+  const {cart}=useContext(cartContext);
   const[total,setTotal]=useState(0);
   useEffect(()=>{
     setTotal(cart.reduce((acc,curr)=>acc+parseInt(curr.price),0));
